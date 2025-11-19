@@ -167,6 +167,7 @@ class PDDCLI(click.Group):
     """Custom Click Group that adds a Generate Suite section to root help."""
 
     def format_help(self, ctx: click.Context, formatter: click.HelpFormatter) -> None:
+        self.format_help_text(ctx, formatter)
         self.format_usage(ctx, formatter)
         with formatter.section("Generate Suite (related commands)"):
             formatter.write_dl([
