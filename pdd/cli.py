@@ -1681,6 +1681,12 @@ def verify(
     default=False,
     help="Enable detailed logging during sync.",
 )
+@click.option(
+    "--merge",
+    is_flag=True,
+    default=False,
+    help="Merge new tests with existing test file instead of creating a separate file.",
+)
 @click.pass_context
 @track_cost
 def sync(
@@ -1692,6 +1698,7 @@ def sync(
     skip_tests: bool,
     target_coverage: float,
     log: bool,
+    merge: bool,
 ) -> Optional[Tuple[Dict[str, Any], float, str]]:
     """Automatically execute the complete PDD workflow loop for a given basename.
 
@@ -1714,6 +1721,7 @@ def sync(
             skip_tests=skip_tests,
             target_coverage=target_coverage,
             log=log,
+            merge=merge,
         )
         return results, total_cost, model
     except Exception as exception:

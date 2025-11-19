@@ -85,6 +85,7 @@ def sync_main(
     skip_tests: bool,
     target_coverage: float,
     log: bool,
+    merge: bool,
 ) -> Tuple[Dict[str, Any], float, str]:
     """
     CLI wrapper for the sync command. Handles parameter validation, path construction,
@@ -282,6 +283,7 @@ def sync_main(
                 local=local,
                 context_config=resolved_config,
                 context_override=context_override,
+                merge=merge,
             )
 
             lang_cost = sync_result.get("total_cost", 0.0)

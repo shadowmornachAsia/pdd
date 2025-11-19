@@ -342,6 +342,7 @@ def sync_orchestration(
     local: bool = False,
     context_config: Optional[Dict[str, str]] = None,
     context_override: Optional[str] = None,
+    merge: bool = False,
 ) -> Dict[str, Any]:
     """
     Orchestrates the complete PDD sync workflow with parallel animation.
@@ -963,9 +964,9 @@ def sync_orchestration(
                             coverage_report=None,
                             existing_tests=None,
                             target_coverage=target_coverage,
-                            merge=False
+                            merge=merge
                         )
-                        
+
                         # After test generation, check if the test file was actually created
                         test_file = pdd_files['test']
                         test_generation_successful = False
